@@ -156,11 +156,11 @@ function Balloons() {
               <div style={styles.balloonShine}></div>
 
               {/* Content */}
-              <div style={styles.balloonContent}>
+              {/* <div style={styles.balloonContent}>
                 <span style={styles.balloonEmoji}>{balloon.emoji}</span>
 
                 <span style={styles.balloonText}>{balloon.text}</span>
-              </div>
+              </div> */}
 
               {/* Knot */}
               <div style={styles.balloonKnot}></div>
@@ -230,7 +230,7 @@ function Message() {
         {"\n\n"}
         Agar duniya me saccha pyaar exist karta hai… toh wo sirf maa ka hota hai
         ✨{"\n\n"}
-        Main shayad perfect beta nahi hu… par meri duniya ki sabse perfect
+        Main shayad perfect beti nahi hu… par meri duniya ki sabse perfect
         insaan aap ho 💖
         {"\n\n"}
         Thank you mummy… har dua ke liye, har sacrifice ke liye, aur har uss pal
