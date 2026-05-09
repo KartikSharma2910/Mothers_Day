@@ -462,7 +462,7 @@ const styles = {
 
   modalImage: {
     width: "100%",
-    height: "clamp(320px, 65vh, 500px)",
+    height: "clamp(280px, 50vh, 420px)",
     objectFit: "cover",
     borderRadius: "22px",
     marginBottom: "20px",
