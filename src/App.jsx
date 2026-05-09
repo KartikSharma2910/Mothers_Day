@@ -186,7 +186,7 @@ function Balloons() {
               style={styles.modalImage}
             />
 
-            <h2 style={styles.modalTitle}>{selectedBalloon.message}</h2>
+            {/* <h2 style={styles.modalTitle}>{selectedBalloon.message}</h2> */}
 
             {/* REMOVE THIS */}
             {/* 
@@ -218,8 +218,6 @@ function Message() {
       <h1 style={styles.heading}>Dear Mummy ❤️</h1>
 
       <p style={styles.message}>
-        Mummy,
-        {"\n\n"}
         Shayad main kabhi aapko properly bata nahi paaya ki aap mere liye kya
         ho…
         {"\n\n"}
