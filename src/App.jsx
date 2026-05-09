@@ -17,7 +17,7 @@ export default function App() {
 
     const timer = setTimeout(() => {
       setShowConfetti(false);
-    }, 4000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, [activeTab]);
@@ -32,7 +32,7 @@ export default function App() {
     <div style={styles.page}>
       {showConfetti && <Confetti recycle={false} numberOfPieces={250} />}
 
-      {/* Background Glow */}
+      {/* Glow Background */}
       <div style={styles.glow1}></div>
       <div style={styles.glow2}></div>
 
@@ -41,11 +41,11 @@ export default function App() {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
             style={{
               ...styles.tabButton,
               ...(activeTab === tab.id ? styles.activeTab : {}),
             }}
+            onClick={() => setActiveTab(tab.id)}
           >
             {tab.label}
           </button>
@@ -67,7 +67,7 @@ export default function App() {
 function Home() {
   return (
     <div style={styles.card}>
-      <Sparkles size={45} color="#fff" />
+      <Sparkles size={42} color="#fff" />
 
       <h1 style={styles.heading}>Happy Mother's Day 💖</h1>
 
@@ -75,47 +75,57 @@ function Home() {
         The world becomes beautiful because mothers exist ✨
       </p>
 
-      {/* Replace image URL with your mummy photo */}
       <div style={styles.imageWrapper}>
         <img src={ImageFive} alt="Mom" style={styles.image} />
       </div>
 
       <div style={styles.floatingHearts}>
         <Heart fill="#ff4d88" color="#ff4d88" size={28} />
-        <Heart fill="#ff85a2" color="#ff85a2" size={18} />
-        <Heart fill="#ffc2d1" color="#ffc2d1" size={22} />
+        <Heart fill="#ff85a2" color="#ff85a2" size={20} />
+        <Heart fill="#ffc2d1" color="#ffc2d1" size={24} />
       </div>
     </div>
   );
 }
 
+/* ---------------- BALLOONS ---------------- */
+
 function Balloons() {
   const [selectedBalloon, setSelectedBalloon] = useState(null);
+
   const balloons = [
     {
       id: 1,
-      color: "#ff4d6d",
+      color: "linear-gradient(135deg,#ff4d6d,#ff8fa3)",
+      emoji: "💖",
+      text: "My World",
       image: ImageOne,
       message: "Mummy aap meri duniya ho ❤️",
       subMessage: "Aapke bina sab adhura lagta hai ✨",
     },
     {
       id: 2,
-      color: "#c77dff",
+      color: "linear-gradient(135deg,#c77dff,#9d4edd)",
+      emoji: "🌸",
+      text: "Best Mom",
       image: ImageTwo,
       message: "Aapki smile meri jaan hai 🌸",
       subMessage: "Bas aap haste raho hamesha 💖",
     },
     {
       id: 3,
-      color: "#38bdf8",
+      color: "linear-gradient(135deg,#38bdf8,#0ea5e9)",
+      emoji: "✨",
+      text: "My Heart",
       image: ImageThree,
       message: "Sabse pyari meri mummy 🥺",
       subMessage: "Rab se pehle aapka naam aata hai ❤️",
     },
     {
       id: 4,
-      color: "#ffd60a",
+      color: "linear-gradient(135deg,#ffd60a,#ffb703)",
+      emoji: "🥺",
+      text: "Forever",
       image: ImageFour,
       message: "Maa ka pyaar sabse pure hota hai ✨",
       subMessage: "Aap meri strength ho mummy 💕",
@@ -142,7 +152,21 @@ function Balloons() {
                 animationDelay: `${index * 0.4}s`,
               }}
             >
-              ❤️
+              {/* Shine */}
+              <div style={styles.balloonShine}></div>
+
+              {/* Content */}
+              <div style={styles.balloonContent}>
+                <span style={styles.balloonEmoji}>{balloon.emoji}</span>
+
+                <span style={styles.balloonText}>{balloon.text}</span>
+              </div>
+
+              {/* Knot */}
+              <div style={styles.balloonKnot}></div>
+
+              {/* String */}
+              <div style={styles.balloonString}></div>
             </div>
           ))}
         </div>
@@ -164,7 +188,12 @@ function Balloons() {
 
             <h2 style={styles.modalTitle}>{selectedBalloon.message}</h2>
 
-            <p style={styles.modalText}>{selectedBalloon.subMessage}</p>
+            {/* REMOVE THIS */}
+            {/* 
+      <p style={styles.modalText}>
+        {selectedBalloon.subMessage}
+      </p> 
+      */}
 
             <button
               style={styles.closeButton}
@@ -184,40 +213,29 @@ function Balloons() {
 function Message() {
   return (
     <div style={styles.messageCard}>
-      <Gift size={45} color="#fff" />
+      <Gift size={42} color="#fff" />
 
       <h1 style={styles.heading}>Dear Mummy ❤️</h1>
 
       <p style={styles.message}>
-        Mummy, <br />
-        <br />
+        Mummy,
+        {"\n\n"}
         Shayad main kabhi aapko properly bata nahi paaya ki aap mere liye kya
         ho…
-        <br />
-        <br />
+        {"\n\n"}
         Jab bhi life me thak jaata hu, haar jaata hu, ya tootne lagta hu… toh
-        sirf ek cheez yaad aati hai — aapka pyaar.
-        <br />
-        <br />
-        Aapne apni khushiyan sacrifice karke meri har khushi poori ki… khud
-        takleef me reh kar bhi hamesha mujhe hasaaya.
-        <br />
-        <br />
+        sirf ek cheez yaad aati hai — aapka pyaar ❤️
+        {"\n\n"}
+        Aapne apni khushiyan sacrifice karke meri har khushi poori ki…
+        {"\n\n"}
         Agar duniya me saccha pyaar exist karta hai… toh wo sirf maa ka hota hai
-        ❤️
-        <br />
-        <br />
+        ✨{"\n\n"}
         Main shayad perfect beta nahi hu… par meri duniya ki sabse perfect
-        insaan aap ho.
-        <br />
-        <br />
+        insaan aap ho 💖
+        {"\n\n"}
         Thank you mummy… har dua ke liye, har sacrifice ke liye, aur har uss pal
         ke liye jahan aap mere saath khadi rahi.
-        <br />
-        <br />
-        Aap meri strength ho… meri duniya ho… meri jaan ho ❤️
-        <br />
-        <br />
+        {"\n\n"}
         Happy Mother’s Day Mummy 🌸
       </p>
     </div>
@@ -235,6 +253,7 @@ const styles = {
     position: "relative",
     padding: "20px",
     color: "white",
+    fontFamily: "Poppins, sans-serif",
   },
 
   glow1: {
@@ -260,11 +279,10 @@ const styles = {
   },
 
   navbar: {
-    width: "100%",
     display: "flex",
     justifyContent: "center",
-    flexWrap: "wrap",
     gap: "12px",
+    flexWrap: "wrap",
     marginBottom: "30px",
     position: "relative",
     zIndex: 2,
@@ -281,21 +299,18 @@ const styles = {
     fontWeight: 600,
     backdropFilter: "blur(12px)",
     transition: "0.4s ease",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
   },
 
   activeTab: {
     background: "linear-gradient(135deg,#ff4d88,#7b2cbf)",
-    transform: "scale(1.06)",
+    transform: "scale(1.05)",
   },
 
   container: {
-    width: "100%",
-    position: "relative",
-    zIndex: 2,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    position: "relative",
+    zIndex: 2,
   },
 
   card: {
@@ -307,28 +322,23 @@ const styles = {
     padding: "40px 25px",
     textAlign: "center",
     backdropFilter: "blur(18px)",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
-    animation: "fadeIn 1s ease",
   },
 
   heading: {
-    fontSize: "clamp(2rem, 5vw, 3.2rem)",
-    lineHeight: "1.2",
+    fontSize: "clamp(2rem, 5vw, 3rem)",
     marginTop: "18px",
     marginBottom: "15px",
     fontWeight: 800,
-    letterSpacing: "-1px",
     background: "linear-gradient(90deg,#fff,#ffb3d1)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
 
   subText: {
-    fontSize: "clamp(14px, 3vw, 18px)",
+    fontSize: "clamp(14px,3vw,18px)",
     opacity: 0.9,
-    marginBottom: "28px",
+    marginBottom: "35px",
     lineHeight: "1.7",
-    padding: "0 8px",
   },
 
   imageWrapper: {
@@ -338,72 +348,93 @@ const styles = {
   },
 
   image: {
-    width: "min(70vw, 260px)",
-    height: "min(70vw, 260px)",
+    width: "min(70vw,260px)",
+    height: "min(70vw,260px)",
     borderRadius: "50%",
     objectFit: "cover",
     border: "5px solid rgba(255,255,255,0.25)",
     boxShadow: "0 20px 50px rgba(255,77,136,0.45)",
-    animation: "pulseGlow 3s infinite",
   },
 
   floatingHearts: {
     display: "flex",
     justifyContent: "center",
-    gap: "18px",
-    marginTop: "18px",
-    flexWrap: "wrap",
+    gap: "20px",
   },
 
   balloonContainer: {
     width: "100%",
     textAlign: "center",
-    padding: "10px",
   },
 
   balloonsArea: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "flex-end",
-    gap: "18px",
+    alignItems: "flex-start",
     flexWrap: "wrap",
-    marginTop: "40px",
+    gap: "50px",
+    marginTop: "70px",
+    paddingBottom: "80px",
   },
 
   balloon: {
-    width: "75px",
-    height: "100px",
-    borderRadius: "50%",
+    width: "95px",
+    height: "120px",
+    borderRadius: "50% 50% 45% 45%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "28px",
-    color: "white",
     position: "relative",
     animation: "float 4s ease-in-out infinite",
-    boxShadow: "0 15px 40px rgba(0,0,0,0.35)",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
+    cursor: "pointer",
   },
 
-  messageCard: {
-    width: "100%",
-    maxWidth: "850px",
-    background: "rgba(255,255,255,0.08)",
-    border: "1px solid rgba(255,255,255,0.15)",
-    borderRadius: "28px",
-    padding: "35px 22px",
-    textAlign: "center",
-    backdropFilter: "blur(18px)",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
-    animation: "fadeIn 1s ease",
+  balloonShine: {
+    position: "absolute",
+    top: "18px",
+    left: "18px",
+    width: "18px",
+    height: "35px",
+    borderRadius: "50%",
+    background: "rgba(255,255,255,0.35)",
+    transform: "rotate(25deg)",
   },
 
-  message: {
-    fontSize: "clamp(15px, 3vw, 21px)",
-    lineHeight: "2",
-    marginTop: "25px",
-    color: "#f8fafc",
-    textAlign: "left",
-    whiteSpace: "pre-line",
+  balloonKnot: {
+    position: "absolute",
+    bottom: "-8px",
+    width: "18px",
+    height: "18px",
+    background: "inherit",
+    clipPath: "polygon(50% 100%, 0 0, 100% 0)",
+  },
+
+  balloonString: {
+    position: "absolute",
+    bottom: "-70px",
+    width: "2px",
+    height: "70px",
+    background: "rgba(255,255,255,0.7)",
+  },
+
+  balloonContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "6px",
+    zIndex: 2,
+  },
+
+  balloonEmoji: {
+    fontSize: "28px",
+  },
+
+  balloonText: {
+    fontSize: "13px",
+    fontWeight: 700,
+    color: "white",
+    textShadow: "0 3px 10px rgba(0,0,0,0.35)",
   },
 
   modalOverlay: {
@@ -427,13 +458,11 @@ const styles = {
     padding: "25px",
     textAlign: "center",
     backdropFilter: "blur(20px)",
-    animation: "fadeIn 0.5s ease",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
   },
 
   modalImage: {
     width: "100%",
-    height: "280px",
+    height: "clamp(320px, 65vh, 500px)",
     objectFit: "cover",
     borderRadius: "22px",
     marginBottom: "20px",
@@ -441,25 +470,19 @@ const styles = {
   },
 
   modalTitle: {
-    fontSize: "26px",
+    fontSize: "24px",
     fontWeight: 700,
-    lineHeight: "1.4",
     marginBottom: "10px",
-    background: "linear-gradient(90deg,#fff,#ffb3d1)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
   },
 
   modalText: {
     fontSize: "16px",
     lineHeight: "1.8",
-    color: "#f1f5f9",
     marginBottom: "22px",
   },
 
   closeButton: {
     border: "none",
-    outline: "none",
     background: "linear-gradient(135deg,#ff4d88,#7b2cbf)",
     color: "white",
     padding: "12px 24px",
@@ -467,6 +490,24 @@ const styles = {
     cursor: "pointer",
     fontSize: "15px",
     fontWeight: 600,
-    boxShadow: "0 10px 30px rgba(255,77,136,0.35)",
+  },
+
+  messageCard: {
+    width: "100%",
+    maxWidth: "850px",
+    background: "rgba(255,255,255,0.08)",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: "28px",
+    padding: "35px 22px",
+    textAlign: "center",
+    backdropFilter: "blur(18px)",
+  },
+
+  message: {
+    fontSize: "clamp(15px,3vw,20px)",
+    lineHeight: "2",
+    marginTop: "25px",
+    whiteSpace: "pre-line",
+    textAlign: "left",
   },
 };
